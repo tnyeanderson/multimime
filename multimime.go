@@ -139,22 +139,3 @@ func FindParts(r *multipart.Reader, findFunc MultipartFindFunc) (parts []Part, e
 func isMultipart(mediaType string) bool {
 	return strings.HasPrefix(mediaType, "multipart/")
 }
-
-//func readPart(p *multipart.Part) {
-//	mediaType, params := getMediaType(p.Header)
-//
-//	if isMultipart(mediaType) {
-//		boundary := params["boundary"]
-//
-//		fmt.Printf("Reading multipart with boundary %q\n", boundary)
-//
-//		pr := multipart.NewReader(p, boundary)
-//		readMultipart(pr)
-//		return
-//	} else if mediaType == "message/rfc822" {
-//		fmt.Println("Part is attached email")
-//		readMsg(p)
-//	}
-//
-//	fmt.Printf("Not multipart: %s\n", p.Header.Get("Content-Type"))
-//}
