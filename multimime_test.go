@@ -15,12 +15,13 @@ func openTestEmail(t *testing.T) *os.File {
 	return r
 }
 
-func printPartsContents(t *testing.T, parts []Part) {
-	var out string
-	for _, part := range parts {
-		out = fmt.Sprintf("%s\n%s", out, string(part.Content))
+func TestGetInlineText(t *testing.T) {
+	r := openTestEmail(t)
+	text, err := GetInlineText(r)
+	if err != nil {
+		t.Fatal(err)
 	}
-	fmt.Println(out)
+	fmt.Println(text)
 }
 
 func TestGetAllParts(t *testing.T) {
@@ -45,7 +46,6 @@ func TestGetTextParts(t *testing.T) {
 	if len(parts) != expected {
 		t.Fatalf("Too many text parts: expected %d, got %d", expected, len(parts))
 	}
-	printPartsContents(t, parts)
 }
 
 func TestGetAttachments(t *testing.T) {
