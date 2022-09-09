@@ -127,7 +127,7 @@ func GetPartDisposition(part *multipart.Part) string {
 	return disposition
 }
 
-// GetMessageType returns the media type from a multipart.Part
+// GetPartType returns the media type from a multipart.Part
 func GetPartType(part *multipart.Part) string {
 	header := part.Header.Get("Content-Type")
 	contentType, _, err := mime.ParseMediaType(header)
